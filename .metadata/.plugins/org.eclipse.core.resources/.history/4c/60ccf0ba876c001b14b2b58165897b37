@@ -1,0 +1,54 @@
+package com.api.dto;
+
+public class TutorialDTO {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private long id;
+	private String title;
+	private String description;
+	private boolean published;
+		
+	public TutorialDTO() {
+	}
+
+	public TutorialDTO(long id, String title, String description, boolean published) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.published = published;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean getPublished() {
+		return published;
+	}
+
+	public void setPublished(boolean published) {
+		this.published = published;
+	}
+	
+}

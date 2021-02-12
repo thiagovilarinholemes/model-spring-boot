@@ -1,0 +1,34 @@
+package com.api.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.api.entities.Tutorial;
+import com.api.repositories.TutorialRepository;
+
+@Service
+public class TutorialService {
+	
+	@Autowired
+	TutorialRepository repository;
+
+	@Transactional(readOnly = true)
+	public List<Tutorial> findAll(){
+		return repository.findAll();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Tutorial> findByTitleContaining(String title){
+		JSONObject jsonObject= new JSONObject(title);
+		return repository.findByTitleContaining(title);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Tutorial> findByPublished(Boolean published){
+		return repository.findByPublished(published);
+	}
+}
