@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/thiagovilarinholemes/model-spring-boot)
+
 # Model Spring Boot
 
 ### About The Project
