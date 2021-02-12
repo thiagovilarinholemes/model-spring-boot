@@ -22,24 +22,28 @@ public class TutorialService {
 	
 	@Autowired
 	TutorialRepository repository;
-
+	
+	/** Method List All Tutorials */
 	@Transactional(readOnly = true)
 	public List<Tutorial> findAll(){
 		return repository.findAllByOrderByTitleAsc();
 	}
 	
+	/** Method List Tutorial ID */
 	@Transactional(readOnly = true)
 	public Tutorial findById(Long id){
 		Optional<Tutorial> obj = repository.findById(id);
 		return obj.orElseThrow(()-> new ResourceNotFoundException(id));
 	}
 	
+	/** Method List Tutorials Title */
 	@Transactional(readOnly = true)
 	public List<Tutorial> findByTitleContaining(String title){
 		JSONObject json = new JSONObject(title);
 		return repository.findByTitleContaining(json.getString("title"));
 	}
 	
+	/** Method List Tutorials Published*/
 	@Transactional(readOnly = true)
 	public List<Tutorial> findByPublished(String published){
 		JSONObject json = new JSONObject(published);
@@ -47,11 +51,13 @@ public class TutorialService {
 		return repository.findByPublished(json.getBoolean("published"));
 	}
 	
+	/** Method Insert Tutorial */
 	@Transactional
 	public Tutorial insert(Tutorial obj) {
 		return repository.save(obj);
 	}
 	
+	/** Method Update Tutorial */
 	@Transactional
 	public Tutorial update(Long id, Tutorial obj){
         try {
@@ -67,6 +73,7 @@ public class TutorialService {
         }
     }
 	
+	/** Method Delete Tutorial */
 	public String delete(Long id){
         try {
             repository.deleteById(id);
@@ -80,6 +87,7 @@ public class TutorialService {
         }
     }
 	
+	/** Method Update Data Tutorial  */
 	public void updateData(Tutorial entity, Tutorial obj){
 		entity.setTitle(obj.getTitle());
 		entity.setDescription(obj.getDescription());
